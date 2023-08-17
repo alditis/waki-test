@@ -1,0 +1,13 @@
+services:    
+    myapp:
+        build: ./app
+        ports:
+            - $APP_PORT:$APP_PORT
+        depends_on:
+            - myredis
+        env_file:
+            - .env
+    myredis:
+        image: redis
+        ports:
+            - $REDIS_PORT:$REDIS_PORT
